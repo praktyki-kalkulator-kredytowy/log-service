@@ -9,8 +9,8 @@ import java.time.LocalDate;
 public class ScheduleConfigurationEntity {
 
     @OneToOne
-    @JoinColumn(name = "orders_id")
-    public OrderEntity orderId;
+    @JoinColumn(name = "schedule_calculation_event_id")
+    public ScheduleCalculationEventEntity orderId;
 
     @Column(name = "capital")
     public Integer capital;
@@ -37,7 +37,7 @@ public class ScheduleConfigurationEntity {
     public Boolean insurance;
 
     public ScheduleConfigurationEntity(
-            OrderEntity orderId,
+            ScheduleCalculationEventEntity orderId,
             Integer capital,
             String installmentType,
             Integer installmentAmount,

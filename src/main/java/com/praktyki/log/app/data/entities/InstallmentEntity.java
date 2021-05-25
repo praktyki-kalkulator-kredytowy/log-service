@@ -9,8 +9,8 @@ import java.time.LocalDate;
 public class InstallmentEntity {
 
     @OneToOne
-    @JoinColumn(name = "orders_id")
-    public OrderEntity orderId;
+    @JoinColumn(name = "schedule_calculation_event_id")
+    public ScheduleCalculationEventEntity orderId;
 
     @Column(name = "installment_index")
     public int installmentIndex;
@@ -28,7 +28,7 @@ public class InstallmentEntity {
     public BigDecimal remainingDebt;
 
     public InstallmentEntity(
-            OrderEntity orderId, int installmentIndex,
+            ScheduleCalculationEventEntity orderId, int installmentIndex,
             LocalDate installmentDate, BigDecimal capitalInstallment,
             BigDecimal interestInstallment, BigDecimal remainingDebt)
     {

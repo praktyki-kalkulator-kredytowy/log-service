@@ -6,18 +6,18 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "orders")
-public class OrderEntity {
+@Table(name = "schedule_calculation_event_id")
+public class ScheduleCalculationEventEntity {
 
     @Id
     @GeneratedValue
-    @Column(name = "orders_id")
+    @Column(name = "schedule_calculation_event_id")
     public int id;
 
-    @Column(name = "orders_date")
+    @Column(name = "schedule_calculation_event_date")
     public LocalDate orderDate;
 
-    public OrderEntity(int id, LocalDate orderDate) {
+    public ScheduleCalculationEventEntity(int id, LocalDate orderDate) {
         this.id = id;
         this.orderDate = orderDate;
     }

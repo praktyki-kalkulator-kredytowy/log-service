@@ -9,8 +9,8 @@ import java.time.LocalDate;
 public class InsurancePremiumEntity {
 
     @OneToOne
-    @JoinColumn(name = "orders_id")
-    public OrderEntity orderId;
+    @JoinColumn(name = "schedule_calculation_event_id")
+    public ScheduleCalculationEventEntity orderId;
 
     @Column(name = "insurance_premium_index")
     public int insurancePremiumIndex;
@@ -22,7 +22,7 @@ public class InsurancePremiumEntity {
     public BigDecimal insurancePremiumValue;
 
     public InsurancePremiumEntity(
-            OrderEntity orderId, int insurancePremiumIndex,
+            ScheduleCalculationEventEntity orderId, int insurancePremiumIndex,
             LocalDate insurancePremiumDate, BigDecimal insurancePremiumValue)
     {
         this.orderId = orderId;

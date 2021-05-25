@@ -8,8 +8,8 @@ import java.math.BigDecimal;
 public class ScheduleSummaryEntity {
 
     @OneToOne
-    @JoinColumn(name = "orders_id")
-    public OrderEntity orderId;
+    @JoinColumn(name = "schedule_calculation_event_id")
+    public ScheduleCalculationEventEntity orderId;
 
     @Column(name = "sum_up_capital_installment")
     public BigDecimal sumUpCapitalInstallment;
@@ -30,7 +30,7 @@ public class ScheduleSummaryEntity {
     public BigDecimal aprc;
 
     public ScheduleSummaryEntity(
-            OrderEntity orderId, BigDecimal sumUpCapitalInstallment,
+            ScheduleCalculationEventEntity orderId, BigDecimal sumUpCapitalInstallment,
             BigDecimal loanPaidOutAmount, BigDecimal commissionAmount,
             BigDecimal insuranceTotalAmount, BigDecimal loanTotalCost, BigDecimal aprc)
     {
