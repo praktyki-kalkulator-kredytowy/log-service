@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Embeddable
+@Entity
 @Table(name = "schedule_calculation_event")
 public class ScheduleCalculationEventEntity {
 

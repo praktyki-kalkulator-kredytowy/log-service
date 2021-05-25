@@ -9,7 +9,6 @@ import java.util.Objects;
 @Table(name = "installments")
 public class InstallmentEntity {
 
-    @Id
     @OneToOne
     @JoinColumn(name = "schedule_calculation_event_id")
     public ScheduleCalculationEventEntity scheduleCalculationEventEntity;
