@@ -2,6 +2,7 @@ package com.praktyki.log.app.data.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Embeddable
 @Table(name = "schedule_summary")
@@ -42,4 +43,34 @@ public class ScheduleSummaryEntity {
         this.loanTotalCost = loanTotalCost;
         this.aprc = aprc;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                 sumUpCapitalInstallment, loanPaidOutAmount, commissionAmount, insuranceTotalAmount,loanTotalCost,aprc
+        );
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Installment {\n");
+
+        sb.append("    sumUpCapitalInstallment: ").append(toIndentedString(sumUpCapitalInstallment)).append("\n");
+        sb.append("    loanPaidOutAmount: ").append(toIndentedString(loanPaidOutAmount)).append("\n");
+        sb.append("    commissionAmount: ").append(toIndentedString(commissionAmount)).append("\n");
+        sb.append("    insuranceTotalAmount: ").append(toIndentedString(insuranceTotalAmount)).append("\n");
+        sb.append("    loanTotalCost: ").append(toIndentedString(loanTotalCost)).append("\n");
+        sb.append("    aprc: ").append(toIndentedString(aprc)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
 }
