@@ -8,6 +8,8 @@
 
 # User-specific stuff
 .idea/**/workspace.xml
+.idea/**/libraries-with-intellij-classes.xml
+.idea/**/misc.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
