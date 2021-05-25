@@ -9,7 +9,7 @@ public class ScheduleSummaryEntity {
 
     @OneToOne
     @JoinColumn(name = "schedule_calculation_event_id")
-    public ScheduleCalculationEventEntity orderId;
+    public ScheduleCalculationEventEntity ScheduleCalculationEventEntity;
 
     @Column(name = "sum_up_capital_installment")
     public BigDecimal sumUpCapitalInstallment;
@@ -30,11 +30,11 @@ public class ScheduleSummaryEntity {
     public BigDecimal aprc;
 
     public ScheduleSummaryEntity(
-            ScheduleCalculationEventEntity orderId, BigDecimal sumUpCapitalInstallment,
+            ScheduleCalculationEventEntity ScheduleCalculationEventEntity, BigDecimal sumUpCapitalInstallment,
             BigDecimal loanPaidOutAmount, BigDecimal commissionAmount,
             BigDecimal insuranceTotalAmount, BigDecimal loanTotalCost, BigDecimal aprc)
     {
-        this.orderId = orderId;
+        this.ScheduleCalculationEventEntity = ScheduleCalculationEventEntity;
         this.sumUpCapitalInstallment = sumUpCapitalInstallment;
         this.loanPaidOutAmount = loanPaidOutAmount;
         this.commissionAmount = commissionAmount;

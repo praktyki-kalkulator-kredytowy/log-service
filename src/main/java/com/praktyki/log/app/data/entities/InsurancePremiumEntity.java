@@ -3,6 +3,7 @@ package com.praktyki.log.app.data.entities;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Embeddable
 @Table(name = "insurance_premiums")
@@ -10,7 +11,7 @@ public class InsurancePremiumEntity {
 
     @OneToOne
     @JoinColumn(name = "schedule_calculation_event_id")
-    public ScheduleCalculationEventEntity orderId;
+    public ScheduleCalculationEventEntity ScheduleCalculationEventEntity;
 
     @Column(name = "insurance_premium_index")
     public int insurancePremiumIndex;
@@ -22,12 +23,36 @@ public class InsurancePremiumEntity {
     public BigDecimal insurancePremiumValue;
 
     public InsurancePremiumEntity(
-            ScheduleCalculationEventEntity orderId, int insurancePremiumIndex,
+            ScheduleCalculationEventEntity ScheduleCalculationEventEntity, int insurancePremiumIndex,
             LocalDate insurancePremiumDate, BigDecimal insurancePremiumValue)
     {
-        this.orderId = orderId;
+        this.ScheduleCalculationEventEntity = ScheduleCalculationEventEntity;
         this.insurancePremiumIndex = insurancePremiumIndex;
         this.insurancePremiumDate = insurancePremiumDate;
         this.insurancePremiumValue = insurancePremiumValue;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(insurancePremiumIndex, insurancePremiumDate, insurancePremiumValue);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class InsurancePremium {\n");
+
+        sb.append("    index: ").append(toIndentedString(insurancePremiumIndex)).append("\n");
+        sb.append("    date: ").append(toIndentedString(insurancePremiumDate)).append("\n");
+        sb.append("    amount: ").append(toIndentedString(insurancePremiumValue)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

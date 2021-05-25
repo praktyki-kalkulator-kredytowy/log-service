@@ -3,6 +3,7 @@ package com.praktyki.log.app.data.entities;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Embeddable
 @Table(name = "installments")
@@ -10,7 +11,7 @@ public class InstallmentEntity {
 
     @OneToOne
     @JoinColumn(name = "schedule_calculation_event_id")
-    public ScheduleCalculationEventEntity orderId;
+    public ScheduleCalculationEventEntity ScheduleCalculationEventEntity;
 
     @Column(name = "installment_index")
     public int installmentIndex;
@@ -28,15 +29,42 @@ public class InstallmentEntity {
     public BigDecimal remainingDebt;
 
     public InstallmentEntity(
-            ScheduleCalculationEventEntity orderId, int installmentIndex,
+            ScheduleCalculationEventEntity ScheduleCalculationEventEntity, int installmentIndex,
             LocalDate installmentDate, BigDecimal capitalInstallment,
             BigDecimal interestInstallment, BigDecimal remainingDebt)
     {
-        this.orderId = orderId;
+        this.ScheduleCalculationEventEntity = ScheduleCalculationEventEntity;
         this.installmentIndex = installmentIndex;
         this.installmentDate = installmentDate;
         this.capitalInstallment = capitalInstallment;
         this.interestInstallment = interestInstallment;
         this.remainingDebt = remainingDebt;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(installmentIndex, installmentDate, capitalInstallment, interestInstallment, remainingDebt);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Installment {\n");
+
+        sb.append("    index: ").append(toIndentedString(installmentIndex)).append("\n");
+        sb.append("    date: ").append(toIndentedString(installmentDate)).append("\n");
+        sb.append("    capitalInstallment: ").append(toIndentedString(capitalInstallment)).append("\n");
+        sb.append("    interestInstallment: ").append(toIndentedString(interestInstallment)).append("\n");
+        sb.append("    remainingDebt: ").append(toIndentedString(remainingDebt)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
 }
