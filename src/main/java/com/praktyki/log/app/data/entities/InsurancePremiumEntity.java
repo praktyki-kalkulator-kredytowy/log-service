@@ -5,12 +5,13 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Entity
+@Embeddable
 @Table(name = "insurance_premiums")
 public class InsurancePremiumEntity {
 
-    @EmbeddedId
-    public ScheduleCalculationEventPK scheduleCalculationEventPK;
+    @OneToOne
+    @JoinColumn(name = "schedule_calculation_event_id")
+    public ScheduleCalculationEventEntity scheduleCalculationEventEntity;
 
     @Column(name = "insurance_premium_index")
     public int insurancePremiumIndex;
@@ -21,11 +22,14 @@ public class InsurancePremiumEntity {
     @Column(name = "insurance_premium_value")
     public BigDecimal insurancePremiumValue;
 
+    public InsurancePremiumEntity() {
+    }
+
     public InsurancePremiumEntity(
-            ScheduleCalculationEventPK scheduleCalculationEventPK, int insurancePremiumIndex,
+            ScheduleCalculationEventEntity scheduleCalculationEventEntity, int insurancePremiumIndex,
             LocalDate insurancePremiumDate, BigDecimal insurancePremiumValue)
     {
-        this.scheduleCalculationEventPK = scheduleCalculationEventPK;
+        this.scheduleCalculationEventEntity = scheduleCalculationEventEntity;
         this.insurancePremiumIndex = insurancePremiumIndex;
         this.insurancePremiumDate = insurancePremiumDate;
         this.insurancePremiumValue = insurancePremiumValue;

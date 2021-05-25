@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Entity
-@Table(name = "schedule_calculation_event_id")
+@Embeddable
+@Table(name = "schedule_calculation_event")
 public class ScheduleCalculationEventEntity {
 
     @Id
@@ -18,7 +18,11 @@ public class ScheduleCalculationEventEntity {
     @Column(name = "schedule_calculation_event_date")
     public LocalDate orderDate;
 
-    public ScheduleCalculationEventEntity(LocalDate orderDate) {
+    public ScheduleCalculationEventEntity() {
+    }
+
+    public ScheduleCalculationEventEntity(int id, LocalDate orderDate) {
+        this.id = id;
         this.orderDate = orderDate;
     }
 
@@ -30,7 +34,7 @@ public class ScheduleCalculationEventEntity {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class InsurancePremium {\n");
+        sb.append("class ScheduleCalculationEvent {\n");
 
         sb.append("    date: ").append(toIndentedString(orderDate)).append("\n");
         sb.append("}");

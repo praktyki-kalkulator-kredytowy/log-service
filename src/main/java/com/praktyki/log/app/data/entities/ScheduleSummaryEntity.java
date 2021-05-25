@@ -4,12 +4,13 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@Entity
+@Embeddable
 @Table(name = "schedule_summary")
 public class ScheduleSummaryEntity {
 
-    @EmbeddedId
-    public ScheduleCalculationEventPK scheduleCalculationEventPK;
+    @OneToOne
+    @JoinColumn(name = "schedule_calculation_event_id")
+    public ScheduleCalculationEventEntity scheduleCalculationEventEntity;
 
     @Column(name = "sum_up_capital_installment")
     public BigDecimal sumUpCapitalInstallment;
@@ -29,12 +30,15 @@ public class ScheduleSummaryEntity {
     @Column(name = "aprc")
     public BigDecimal aprc;
 
+    public ScheduleSummaryEntity() {
+    }
+
     public ScheduleSummaryEntity(
-            ScheduleCalculationEventPK scheduleCalculationEventPK, BigDecimal sumUpCapitalInstallment,
+            ScheduleCalculationEventEntity scheduleCalculationEventEntity, BigDecimal sumUpCapitalInstallment,
             BigDecimal loanPaidOutAmount, BigDecimal commissionAmount,
             BigDecimal insuranceTotalAmount, BigDecimal loanTotalCost, BigDecimal aprc)
     {
-        this.scheduleCalculationEventPK = scheduleCalculationEventPK;
+        this.scheduleCalculationEventEntity = scheduleCalculationEventEntity;
         this.sumUpCapitalInstallment = sumUpCapitalInstallment;
         this.loanPaidOutAmount = loanPaidOutAmount;
         this.commissionAmount = commissionAmount;
@@ -53,7 +57,7 @@ public class ScheduleSummaryEntity {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class Installment {\n");
+        sb.append("class ScheduleSummary {\n");
 
         sb.append("    sumUpCapitalInstallment: ").append(toIndentedString(sumUpCapitalInstallment)).append("\n");
         sb.append("    loanPaidOutAmount: ").append(toIndentedString(loanPaidOutAmount)).append("\n");
