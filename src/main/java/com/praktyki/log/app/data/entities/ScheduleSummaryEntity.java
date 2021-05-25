@@ -4,13 +4,12 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@Embeddable
+@Entity
 @Table(name = "schedule_summary")
 public class ScheduleSummaryEntity {
 
-    @OneToOne
-    @JoinColumn(name = "schedule_calculation_event_id")
-    public ScheduleCalculationEventEntity ScheduleCalculationEventEntity;
+    @EmbeddedId
+    public ScheduleCalculationEventPK scheduleCalculationEventPK;
 
     @Column(name = "sum_up_capital_installment")
     public BigDecimal sumUpCapitalInstallment;
@@ -31,11 +30,11 @@ public class ScheduleSummaryEntity {
     public BigDecimal aprc;
 
     public ScheduleSummaryEntity(
-            ScheduleCalculationEventEntity ScheduleCalculationEventEntity, BigDecimal sumUpCapitalInstallment,
+            ScheduleCalculationEventPK scheduleCalculationEventPK, BigDecimal sumUpCapitalInstallment,
             BigDecimal loanPaidOutAmount, BigDecimal commissionAmount,
             BigDecimal insuranceTotalAmount, BigDecimal loanTotalCost, BigDecimal aprc)
     {
-        this.ScheduleCalculationEventEntity = ScheduleCalculationEventEntity;
+        this.scheduleCalculationEventPK = scheduleCalculationEventPK;
         this.sumUpCapitalInstallment = sumUpCapitalInstallment;
         this.loanPaidOutAmount = loanPaidOutAmount;
         this.commissionAmount = commissionAmount;

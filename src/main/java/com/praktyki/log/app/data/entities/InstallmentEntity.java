@@ -5,13 +5,12 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Embeddable
+@Entity
 @Table(name = "installments")
 public class InstallmentEntity {
 
-    @OneToOne
-    @JoinColumn(name = "schedule_calculation_event_id")
-    public ScheduleCalculationEventEntity ScheduleCalculationEventEntity;
+    @EmbeddedId
+    public ScheduleCalculationEventPK scheduleCalculationEventPK;
 
     @Column(name = "installment_index")
     public int installmentIndex;
@@ -29,11 +28,11 @@ public class InstallmentEntity {
     public BigDecimal remainingDebt;
 
     public InstallmentEntity(
-            ScheduleCalculationEventEntity ScheduleCalculationEventEntity, int installmentIndex,
+            ScheduleCalculationEventPK scheduleCalculationEventPK, int installmentIndex,
             LocalDate installmentDate, BigDecimal capitalInstallment,
             BigDecimal interestInstallment, BigDecimal remainingDebt)
     {
-        this.ScheduleCalculationEventEntity = ScheduleCalculationEventEntity;
+        this.scheduleCalculationEventPK = scheduleCalculationEventPK;
         this.installmentIndex = installmentIndex;
         this.installmentDate = installmentDate;
         this.capitalInstallment = capitalInstallment;

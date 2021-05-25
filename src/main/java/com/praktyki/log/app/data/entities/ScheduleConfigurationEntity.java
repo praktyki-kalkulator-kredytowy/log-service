@@ -5,13 +5,12 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Embeddable
+@Entity
 @Table(name = "schedule_configuration")
 public class ScheduleConfigurationEntity {
 
-    @OneToOne
-    @JoinColumn(name = "schedule_calculation_event_id")
-    public ScheduleCalculationEventEntity mScheduleCalculationEventEntity;
+    @EmbeddedId
+    public ScheduleCalculationEventPK scheduleCalculationEventPK;
 
     @Column(name = "capital")
     public Integer capital;
@@ -38,7 +37,7 @@ public class ScheduleConfigurationEntity {
     public Boolean insurance;
 
     public ScheduleConfigurationEntity(
-            ScheduleCalculationEventEntity mScheduleCalculationEventEntity,
+            ScheduleCalculationEventPK scheduleCalculationEventPK,
             Integer capital,
             InstallmentType installmentType,
             Integer installmentAmount,
@@ -48,7 +47,7 @@ public class ScheduleConfigurationEntity {
             Integer age,
             Boolean insurance) 
     {
-        this.mScheduleCalculationEventEntity = mScheduleCalculationEventEntity;
+        this.scheduleCalculationEventPK = scheduleCalculationEventPK;
         this.capital = capital;
         this.installmentType = installmentType;
         this.installmentAmount = installmentAmount;
