@@ -1,11 +1,11 @@
 package com.praktyki.log.web.message;
 
 import com.praktyki.log.app.data.converters.PaymentConverter;
-import com.praktyki.log.app.data.converters.ScheduleCalculationEventConverter;
+import com.praktyki.log.app.data.converters.ScheduleCalculationEventDetailsConverter;
 import com.praktyki.log.app.data.entities.ScheduleCalculationEventEntity;
 import com.praktyki.log.app.data.repositories.PaymentsRepository;
 import com.praktyki.log.app.data.repositories.ScheduleCalculationEventRepository;
-import com.praktyki.log.web.message.models.ScheduleCalculationEventModel;
+import com.praktyki.log.web.message.models.ScheduleCalculationEventDetailsModel;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,7 +17,7 @@ public class ReceiveAndSaveSchedule {
     private PaymentConverter mPaymentConverter;
 
     @Autowired
-    private ScheduleCalculationEventConverter mScheduleCalculationEventConverter;
+    private ScheduleCalculationEventDetailsConverter mScheduleCalculationEventDetailsConverter;
 
     @Autowired
     private PaymentsRepository mPaymentsRepository;
@@ -26,16 +26,16 @@ public class ReceiveAndSaveSchedule {
     private ScheduleCalculationEventRepository mScheduleCalculationEventRepository;
 
     @RabbitListener(queues = "#{getAnonymousQueue.name}")
-    public void received(ScheduleCalculationEventModel scheduleCalculationEventModel) throws InterruptedException {
+    public void received(ScheduleCalculationEventDetailsModel scheduleCalculationEventDetailsModel) throws InterruptedException {
 
         ScheduleCalculationEventEntity scheduleCalculationEventEntity =
-                mScheduleCalculationEventConverter.convertToEntity(scheduleCalculationEventModel);
+                mScheduleCalculationEventDetailsConverter.convertToEntity(scheduleCalculationEventDetailsModel);
 
         mScheduleCalculationEventRepository.save(scheduleCalculationEventEntity);
 
         mPaymentsRepository.saveAll(
                 mPaymentConverter.convertListToEntity(
-                        scheduleCalculationEventModel.schedule.payments,
+                        scheduleCalculationEventDetailsModel.schedule.payments,
                         scheduleCalculationEventEntity
                 )
         );
