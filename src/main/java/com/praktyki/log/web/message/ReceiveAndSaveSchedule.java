@@ -2,16 +2,13 @@ package com.praktyki.log.web.message;
 
 import com.praktyki.log.app.data.converters.PaymentConverter;
 import com.praktyki.log.app.data.converters.ScheduleCalculationEventConverter;
-import com.praktyki.log.app.data.converters.ScheduleConverter;
 import com.praktyki.log.app.data.entities.ScheduleCalculationEventEntity;
 import com.praktyki.log.app.data.repositories.PaymentsRepository;
 import com.praktyki.log.app.data.repositories.ScheduleCalculationEventRepository;
-import com.praktyki.log.web.message.models.Schedule;
-import com.praktyki.log.web.message.models.ScheduleCalculationEvent;
+import com.praktyki.log.web.message.models.ScheduleCalculationEventModel;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
 public class ReceiveAndSaveSchedule {
@@ -29,16 +26,16 @@ public class ReceiveAndSaveSchedule {
     private ScheduleCalculationEventRepository mScheduleCalculationEventRepository;
 
     @RabbitListener(queues = "#{getAnonymousQueue.name}")
-    public void received(ScheduleCalculationEvent scheduleCalculationEvent) throws InterruptedException {
+    public void received(ScheduleCalculationEventModel scheduleCalculationEventModel) throws InterruptedException {
 
         ScheduleCalculationEventEntity scheduleCalculationEventEntity =
-                mScheduleCalculationEventConverter.convertToEntity(scheduleCalculationEvent);
+                mScheduleCalculationEventConverter.convertToEntity(scheduleCalculationEventModel);
 
         mScheduleCalculationEventRepository.save(scheduleCalculationEventEntity);
 
         mPaymentsRepository.saveAll(
                 mPaymentConverter.convertListToEntity(
-                        scheduleCalculationEvent.schedule.getPaymentList(),
+                        scheduleCalculationEventModel.schedule.payments,
                         scheduleCalculationEventEntity
                 )
         );
