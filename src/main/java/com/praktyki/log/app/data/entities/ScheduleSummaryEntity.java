@@ -5,12 +5,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Embeddable
-@Table(name = "schedule_summary")
 public class ScheduleSummaryEntity {
-
-    @OneToOne
-    @JoinColumn(name = "schedule_calculation_event_id")
-    public ScheduleCalculationEventEntity scheduleCalculationEventEntity;
 
     @Column(name = "sum_up_capital_installment")
     public BigDecimal sumUpCapitalInstallment;
@@ -34,11 +29,10 @@ public class ScheduleSummaryEntity {
     }
 
     public ScheduleSummaryEntity(
-            ScheduleCalculationEventEntity scheduleCalculationEventEntity, BigDecimal sumUpCapitalInstallment,
+            BigDecimal sumUpCapitalInstallment,
             BigDecimal loanPaidOutAmount, BigDecimal commissionAmount,
             BigDecimal insuranceTotalAmount, BigDecimal loanTotalCost, BigDecimal aprc)
     {
-        this.scheduleCalculationEventEntity = scheduleCalculationEventEntity;
         this.sumUpCapitalInstallment = sumUpCapitalInstallment;
         this.loanPaidOutAmount = loanPaidOutAmount;
         this.commissionAmount = commissionAmount;
@@ -57,7 +51,7 @@ public class ScheduleSummaryEntity {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class ScheduleSummary {\n");
+        sb.append("ScheduleSummary {\n");
 
         sb.append("    sumUpCapitalInstallment: ").append(toIndentedString(sumUpCapitalInstallment)).append("\n");
         sb.append("    loanPaidOutAmount: ").append(toIndentedString(loanPaidOutAmount)).append("\n");

@@ -1,7 +1,5 @@
 package com.praktyki.log.app.data.entities;
 
-import org.springframework.context.annotation.Configuration;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -13,22 +11,34 @@ public class ScheduleCalculationEventEntity {
     @Id
     @GeneratedValue
     @Column(name = "schedule_calculation_event_id")
-    public int id;
+    public int scheduleCalculationEventId;
 
     @Column(name = "schedule_calculation_event_date")
     public LocalDate orderDate;
 
+    @Embedded
+    public ScheduleConfigurationEntity scheduleConfigurationEntity;
+
+    @Embedded
+    public ScheduleSummaryEntity scheduleSummaryEntity;
+
     public ScheduleCalculationEventEntity() {
     }
 
-    public ScheduleCalculationEventEntity(int id, LocalDate orderDate) {
-        this.id = id;
+    public ScheduleCalculationEventEntity(
+            int scheduleCalculationEventId, LocalDate orderDate,
+            ScheduleConfigurationEntity scheduleConfigurationEntity, ScheduleSummaryEntity scheduleSummaryEntity
+    )
+    {
+        this.scheduleCalculationEventId = scheduleCalculationEventId;
         this.orderDate = orderDate;
+        this.scheduleConfigurationEntity = scheduleConfigurationEntity;
+        this.scheduleSummaryEntity = scheduleSummaryEntity;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderDate);
+        return Objects.hash(orderDate, scheduleConfigurationEntity, scheduleSummaryEntity);
     }
 
     @Override
@@ -37,6 +47,8 @@ public class ScheduleCalculationEventEntity {
         sb.append("class ScheduleCalculationEvent {\n");
 
         sb.append("    date: ").append(toIndentedString(orderDate)).append("\n");
+        sb.append("    ").append(scheduleConfigurationEntity.toString()).append("\n");
+        sb.append("    ").append(scheduleSummaryEntity.toString()).append("\n");
         sb.append("}");
         return sb.toString();
     }

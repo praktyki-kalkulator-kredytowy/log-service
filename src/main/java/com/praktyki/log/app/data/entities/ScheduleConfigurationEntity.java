@@ -6,17 +6,13 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Embeddable
-@Table(name = "schedule_configuration")
 public class ScheduleConfigurationEntity {
-
-    @OneToOne
-    @JoinColumn(name = "schedule_calculation_event_id")
-    public ScheduleCalculationEventEntity scheduleCalculationEventEntity;
 
     @Column(name = "capital")
     public Integer capital;
 
     @Column(name = "installment_type")
+    @Enumerated(EnumType.STRING)
     public InstallmentType installmentType;
 
     @Column(name = "installment_amount")
@@ -41,7 +37,6 @@ public class ScheduleConfigurationEntity {
     }
 
     public ScheduleConfigurationEntity(
-            ScheduleCalculationEventEntity scheduleCalculationEventEntity,
             Integer capital,
             InstallmentType installmentType,
             Integer installmentAmount,
@@ -51,7 +46,6 @@ public class ScheduleConfigurationEntity {
             Integer age,
             Boolean insurance) 
     {
-        this.scheduleCalculationEventEntity = scheduleCalculationEventEntity;
         this.capital = capital;
         this.installmentType = installmentType;
         this.installmentAmount = installmentAmount;
@@ -73,7 +67,7 @@ public class ScheduleConfigurationEntity {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class ScheduleConfiguration {\n");
+        sb.append("ScheduleConfiguration {\n");
 
         sb.append("    capital: ").append(toIndentedString(capital)).append("\n");
         sb.append("    installmentType: ").append(toIndentedString(installmentType)).append("\n");
