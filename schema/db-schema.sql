@@ -12,7 +12,7 @@ create table schedule_calculation_event(
     sum_up_capital_installment double not null,
     loan_paid_out_amount double not null,
     commission_amount double not null,
-    insurance_total_cost double null,
+    insurance_total_cost double not null,
     loan_total_cost double not null,
     aprc double not null
 );
