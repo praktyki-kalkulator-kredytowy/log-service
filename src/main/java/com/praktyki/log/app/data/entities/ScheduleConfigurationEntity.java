@@ -9,7 +9,7 @@ import java.util.Objects;
 public class ScheduleConfigurationEntity {
 
     @Column(name = "capital")
-    public Integer capital;
+    public BigDecimal capital;
 
     @Column(name = "installment_type")
     @Enumerated(EnumType.STRING)
@@ -19,13 +19,13 @@ public class ScheduleConfigurationEntity {
     public Integer installmentAmount;
 
     @Column(name = "interest_rate")
-    public BigDecimal interestRate;
+    public double interestRate;
 
     @Column(name = "withdrawal_date")
     public LocalDate withdrawalDate;
 
     @Column(name = "commission_rate")
-    public Integer commissionRate;
+    public double commissionRate;
 
     @Column(name = "age")
     public Integer age;
@@ -37,12 +37,12 @@ public class ScheduleConfigurationEntity {
     }
 
     public ScheduleConfigurationEntity(
-            Integer capital,
+            BigDecimal capital,
             InstallmentType installmentType,
             Integer installmentAmount,
-            BigDecimal interestRate,
+            double interestRate,
             LocalDate withdrawalDate,
-            Integer commissionRate,
+            double commissionRate,
             Integer age,
             Boolean insurance) 
     {
