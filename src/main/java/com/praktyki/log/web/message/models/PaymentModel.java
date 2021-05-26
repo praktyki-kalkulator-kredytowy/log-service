@@ -1,5 +1,8 @@
 package com.praktyki.log.web.message.models;
 
+import org.springframework.lang.Nullable;
+
+import javax.validation.constraints.Null;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;

@@ -76,8 +76,9 @@ public class AuditDataController {
     }
 
     @GetMapping("/api/v1/audit/{id}")
-    public ScheduleCalculationEventDetailsModel getEventById(@Valid @Min(1) @PathVariable int id)
-            throws NotSuchEntityException {
+    public ScheduleCalculationEventDetailsModel getEventById(@Valid @Min(0) @PathVariable int id)
+            throws Exception {
+
 
         ScheduleCalculationEventEntity scheduleCalculationEventEntity =
                 mScheduleCalculationEventRepository.findById(id).orElseThrow(NotSuchEntityException::new);

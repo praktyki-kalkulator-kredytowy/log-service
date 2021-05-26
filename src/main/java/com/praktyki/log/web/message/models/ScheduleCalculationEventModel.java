@@ -1,5 +1,7 @@
 package com.praktyki.log.web.message.models;
 
+import org.springframework.lang.Nullable;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -11,7 +13,7 @@ public class ScheduleCalculationEventModel {
     public double interestRate;
     public LocalDate withdrawalDate;
     public double commissionRate;
-    public int age;
+    public Integer age;
     public boolean insurance;
     public double capitalInstallmentSum;
     public double loanPaidOutAmount;
@@ -32,7 +34,7 @@ public class ScheduleCalculationEventModel {
             double interestRate,
             LocalDate withdrawalDate,
             double commissionRate,
-            int age,
+            Integer age,
             boolean insurance,
             double capitalInstallmentSum,
             double loanPaidOutAmount,
