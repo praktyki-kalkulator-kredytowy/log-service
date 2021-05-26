@@ -2,14 +2,14 @@ package com.praktyki.log.app.data.converters;
 
 import com.praktyki.log.app.data.entities.PaymentEntity;
 import com.praktyki.log.app.data.entities.ScheduleCalculationEventEntity;
-import com.praktyki.log.web.message.models.ScheduleCalculationEventModel;
+import com.praktyki.log.web.message.models.ScheduleCalculationEventDetailsModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class ScheduleCalculationEventConverterImpl implements ScheduleCalculationEventConverter {
+public class ScheduleCalculationEventDetailsConverterImpl implements ScheduleCalculationEventDetailsConverter {
 
     @Autowired
     private ScheduleConverter mScheduleConverter;
@@ -18,26 +18,26 @@ public class ScheduleCalculationEventConverterImpl implements ScheduleCalculatio
     private ScheduleConfigurationConverter mScheduleConfigurationConverter;
 
     @Override
-    public ScheduleCalculationEventEntity convertToEntity(ScheduleCalculationEventModel scheduleCalculationEventModel) {
+    public ScheduleCalculationEventEntity convertToEntity(ScheduleCalculationEventDetailsModel scheduleCalculationEventDetailsModel) {
 
         return new ScheduleCalculationEventEntity(
-                scheduleCalculationEventModel.id,
-                scheduleCalculationEventModel.calculationDate,
+                scheduleCalculationEventDetailsModel.id,
+                scheduleCalculationEventDetailsModel.calculationDate,
                 mScheduleConfigurationConverter.convertToEntity(
-                        scheduleCalculationEventModel.schedule.scheduleConfiguration
+                        scheduleCalculationEventDetailsModel.schedule.scheduleConfiguration
                 ),
-                mScheduleConverter.convertToSummaryEntity(scheduleCalculationEventModel.schedule)
+                mScheduleConverter.convertToSummaryEntity(scheduleCalculationEventDetailsModel.schedule)
         );
 
     }
 
     @Override
-    public ScheduleCalculationEventModel convertToModel(
+    public ScheduleCalculationEventDetailsModel convertToModel(
             ScheduleCalculationEventEntity scheduleCalculationEventEntity,
             List<PaymentEntity> paymentEntityList)
     {
-        return new ScheduleCalculationEventModel(
-                scheduleCalculationEventEntity.scheduleCalculationEventId,
+        return new ScheduleCalculationEventDetailsModel(
+                scheduleCalculationEventEntity.eventId,
                 mScheduleConverter.convertToScheduleModel(
                         scheduleCalculationEventEntity.scheduleSummaryEntity,
                         scheduleCalculationEventEntity.scheduleConfigurationEntity,

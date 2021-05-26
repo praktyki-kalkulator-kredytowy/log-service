@@ -11,7 +11,7 @@ public class ScheduleCalculationEventEntity {
     @Id
     @GeneratedValue
     @Column(name = "schedule_calculation_event_id")
-    public int scheduleCalculationEventId;
+    public int eventId;
 
     @Column(name = "schedule_calculation_event_date")
     public LocalDate orderDate;
@@ -26,11 +26,11 @@ public class ScheduleCalculationEventEntity {
     }
 
     public ScheduleCalculationEventEntity(
-            int scheduleCalculationEventId, LocalDate orderDate,
+            int eventId, LocalDate orderDate,
             ScheduleConfigurationEntity scheduleConfigurationEntity, ScheduleSummaryEntity scheduleSummaryEntity
     )
     {
-        this.scheduleCalculationEventId = scheduleCalculationEventId;
+        this.eventId = eventId;
         this.orderDate = orderDate;
         this.scheduleConfigurationEntity = scheduleConfigurationEntity;
         this.scheduleSummaryEntity = scheduleSummaryEntity;
