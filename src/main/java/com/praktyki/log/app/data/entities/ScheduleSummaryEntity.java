@@ -8,30 +8,30 @@ import java.util.Objects;
 public class ScheduleSummaryEntity {
 
     @Column(name = "sum_up_capital_installment")
-    public BigDecimal sumUpCapitalInstallment;
+    public Double sumUpCapitalInstallment;
 
     @Column(name = "loan_paid_out_amount")
-    public BigDecimal loanPaidOutAmount;
+    public Double loanPaidOutAmount;
 
     @Column(name = "commission_amount")
-    public BigDecimal commissionAmount;
+    public Double commissionAmount;
 
     @Column(name = "insurance_total_cost")
-    public BigDecimal insuranceTotalAmount;
+    public Double insuranceTotalAmount;
 
     @Column(name = "loan_total_cost")
-    public BigDecimal loanTotalCost;
+    public Double loanTotalCost;
 
     @Column(name = "aprc")
-    public BigDecimal aprc;
+    public Double aprc;
 
     public ScheduleSummaryEntity() {
     }
 
     public ScheduleSummaryEntity(
-            BigDecimal sumUpCapitalInstallment,
-            BigDecimal loanPaidOutAmount, BigDecimal commissionAmount,
-            BigDecimal insuranceTotalAmount, BigDecimal loanTotalCost, BigDecimal aprc)
+            Double sumUpCapitalInstallment,
+            Double loanPaidOutAmount, Double commissionAmount,
+            Double insuranceTotalAmount, Double loanTotalCost, Double aprc)
     {
         this.sumUpCapitalInstallment = sumUpCapitalInstallment;
         this.loanPaidOutAmount = loanPaidOutAmount;

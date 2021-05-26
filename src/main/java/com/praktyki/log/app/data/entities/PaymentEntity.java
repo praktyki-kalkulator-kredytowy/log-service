@@ -21,16 +21,16 @@ public class PaymentEntity {
     public LocalDate installmentDate;
 
     @Column(name = "capital_payment")
-    public BigDecimal capitalInstallment;
+    public Double capitalInstallment;
 
     @Column(name = "interest_payment")
-    public BigDecimal interestInstallment;
+    public Double interestInstallment;
 
     @Column(name = "remaining_debt")
-    public BigDecimal remainingDebt;
+    public Double remainingDebt;
 
     @Column(name = "insurance_premium_value")
-    public BigDecimal insurancePremiumValue;
+    public Double insurancePremiumValue;
 
     @ManyToOne
     @JoinColumn(name = "schedule_calculation_event_id")
@@ -41,8 +41,8 @@ public class PaymentEntity {
 
     public PaymentEntity(
             ScheduleCalculationEventEntity scheduleCalculationEventEntity, int installmentIndex,
-            LocalDate installmentDate, BigDecimal capitalInstallment,
-            BigDecimal interestInstallment, BigDecimal remainingDebt, BigDecimal insurancePremiumValue)
+            LocalDate installmentDate, Double capitalInstallment,
+            Double interestInstallment, Double remainingDebt, Double insurancePremiumValue)
     {
         this.scheduleCalculationEventEntity = scheduleCalculationEventEntity;
         this.installmentIndex = installmentIndex;

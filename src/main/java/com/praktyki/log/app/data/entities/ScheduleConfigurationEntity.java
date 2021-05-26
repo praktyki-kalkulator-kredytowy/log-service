@@ -9,7 +9,7 @@ import java.util.Objects;
 public class ScheduleConfigurationEntity {
 
     @Column(name = "capital")
-    public BigDecimal capital;
+    public Double capital;
 
     @Column(name = "installment_type")
     @Enumerated(EnumType.STRING)
@@ -37,7 +37,7 @@ public class ScheduleConfigurationEntity {
     }
 
     public ScheduleConfigurationEntity(
-            BigDecimal capital,
+            Double capital,
             InstallmentType installmentType,
             Integer installmentAmount,
             double interestRate,
