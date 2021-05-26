@@ -12,8 +12,7 @@ public class ScheduleConfigurationEntity {
     public Double capital;
 
     @Column(name = "installment_type")
-    @Enumerated(EnumType.STRING)
-    public InstallmentType installmentType;
+    public String installmentType;
 
     @Column(name = "installment_amount")
     public Integer installmentAmount;
@@ -38,7 +37,7 @@ public class ScheduleConfigurationEntity {
 
     public ScheduleConfigurationEntity(
             Double capital,
-            InstallmentType installmentType,
+            String installmentType,
             Integer installmentAmount,
             double interestRate,
             LocalDate withdrawalDate,

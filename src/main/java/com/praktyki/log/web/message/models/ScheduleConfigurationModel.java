@@ -1,7 +1,5 @@
 package com.praktyki.log.web.message.models;
 
-import com.praktyki.log.app.data.entities.InstallmentType;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;

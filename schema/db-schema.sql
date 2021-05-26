@@ -2,7 +2,7 @@ create table schedule_calculation_event(
     schedule_calculation_event_id int not null primary key auto_increment,
     schedule_calculation_event_date date not null,
     capital double not null,
-    installment_type Enum('CONSTANT','DECREASING') not null,
+    installment_type varchar(50) not null,
     installment_amount int not null,
     interest_rate double not null,
     withdrawal_date date not null,
