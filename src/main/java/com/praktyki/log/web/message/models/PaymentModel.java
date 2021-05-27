@@ -5,16 +5,16 @@ import java.time.LocalDate;
 public class PaymentModel {
 
     public int index;
-    public LocalDate installmentDate;
+    public LocalDate date;
     public Double capitalInstallment;
     public Double interestInstallment;
     public Double remainingDebt;
     public Double insurancePremiumValue;
 
-    public PaymentModel(int index, LocalDate installmentDate, Double capitalInstallment,
+    public PaymentModel(int index, LocalDate date, Double capitalInstallment,
                         Double interestInstallment, Double remainingDebt, Double insurancePremiumValue) {
         this.index = index;
-        this.installmentDate = installmentDate;
+        this.date = date;
         this.capitalInstallment = capitalInstallment;
         this.interestInstallment = interestInstallment;
         this.remainingDebt = remainingDebt;
@@ -27,7 +27,7 @@ public class PaymentModel {
     public String toString() {
         return "Installment { " +
                 " Index = " + index +
-                ", InstallmentDate = " + installmentDate +
+                ", InstallmentDate = " + date +
                 ", CapitalInstallment = " + capitalInstallment +
                 ", InterestInstallment = " + interestInstallment +
                 ", RemainingDebt = " + remainingDebt +

@@ -17,7 +17,7 @@ public class PaymentConverterImpl implements PaymentConverter {
         return new PaymentEntity(
                 scheduleCalculationEvent,
                 paymentModel.index,
-                paymentModel.installmentDate,
+                paymentModel.date,
                 paymentModel.capitalInstallment,
                 paymentModel.interestInstallment,
                 paymentModel.remainingDebt,
