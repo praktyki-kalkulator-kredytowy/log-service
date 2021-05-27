@@ -1,5 +1,6 @@
 package com.praktyki.log.configuraion;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -31,16 +32,19 @@ public class RabbitMqConfiguration {
     }
 
     @Bean
-    public MessageConverter getJsonMassageConverter() {
-        return new Jackson2JsonMessageConverter();
+    public MessageConverter getJsonMassageConverter(ObjectMapper objectMapper) {
+        return new Jackson2JsonMessageConverter(objectMapper);
     }
 
     @Bean
-    public SimpleRabbitListenerContainerFactory jsaFactory(ConnectionFactory connectionFactory,
-                                                           SimpleRabbitListenerContainerFactoryConfigurer configure) {
+    public SimpleRabbitListenerContainerFactory jsaFactory(
+            ConnectionFactory connectionFactory,
+            SimpleRabbitListenerContainerFactoryConfigurer configurer,
+            Jackson2JsonMessageConverter converter
+    ) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-        configure.configure(factory, connectionFactory);
-        factory.setMessageConverter(getJsonMassageConverter());
+        configurer.configure(factory, connectionFactory);
+        factory.setMessageConverter(converter);
         return factory;
     }
 
