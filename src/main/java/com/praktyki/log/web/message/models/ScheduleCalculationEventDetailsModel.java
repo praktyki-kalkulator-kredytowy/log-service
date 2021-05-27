@@ -15,6 +15,9 @@ public class ScheduleCalculationEventDetailsModel {
         this.calculationDate = calculationDate;
     }
 
+    public ScheduleCalculationEventDetailsModel() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
