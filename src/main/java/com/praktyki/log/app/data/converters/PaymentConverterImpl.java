@@ -16,12 +16,12 @@ public class PaymentConverterImpl implements PaymentConverter {
     public PaymentEntity convertToEntity(PaymentModel paymentModel, ScheduleCalculationEventEntity scheduleCalculationEvent) {
         return new PaymentEntity(
                 scheduleCalculationEvent,
-                paymentModel.mIndex,
-                paymentModel.mInstallmentDate,
-                paymentModel.mCapitalInstallment,
-                paymentModel.mInterestInstallment,
-                paymentModel.mRemainingDebt,
-                paymentModel.mInsurancePremiumValue
+                paymentModel.index,
+                paymentModel.installmentDate,
+                paymentModel.capitalInstallment,
+                paymentModel.interestInstallment,
+                paymentModel.remainingDebt,
+                paymentModel.insurancePremiumValue
         );
     }
 

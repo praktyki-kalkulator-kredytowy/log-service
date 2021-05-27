@@ -1,29 +1,24 @@
 package com.praktyki.log.web.message.models;
 
-import org.springframework.lang.Nullable;
-
-import javax.validation.constraints.Null;
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class PaymentModel {
 
-    public int mIndex;
-    public LocalDate mInstallmentDate;
-    public Double mCapitalInstallment;
-    public Double mInterestInstallment;
-    public Double mRemainingDebt;
-    public Double mInsurancePremiumValue;
+    public int index;
+    public LocalDate installmentDate;
+    public Double capitalInstallment;
+    public Double interestInstallment;
+    public Double remainingDebt;
+    public Double insurancePremiumValue;
 
     public PaymentModel(int index, LocalDate installmentDate, Double capitalInstallment,
                         Double interestInstallment, Double remainingDebt, Double insurancePremiumValue) {
-        mIndex = index;
-        mInstallmentDate = installmentDate;
-        mCapitalInstallment = capitalInstallment;
-        mInterestInstallment = interestInstallment;
-        mRemainingDebt = remainingDebt;
-        mInsurancePremiumValue = insurancePremiumValue;
+        this.index = index;
+        this.installmentDate = installmentDate;
+        this.capitalInstallment = capitalInstallment;
+        this.interestInstallment = interestInstallment;
+        this.remainingDebt = remainingDebt;
+        this.insurancePremiumValue = insurancePremiumValue;
     }
 
     public PaymentModel() {}
@@ -31,12 +26,12 @@ public class PaymentModel {
     @Override
     public String toString() {
         return "Installment { " +
-                " Index = " + mIndex +
-                ", InstallmentDate = " + mInstallmentDate +
-                ", CapitalInstallment = " + mCapitalInstallment +
-                ", InterestInstallment = " + mInterestInstallment +
-                ", RemainingDebt = " + mRemainingDebt +
-                ", mInsurancePremiumValue = " + mInsurancePremiumValue +
+                " Index = " + index +
+                ", InstallmentDate = " + installmentDate +
+                ", CapitalInstallment = " + capitalInstallment +
+                ", InterestInstallment = " + interestInstallment +
+                ", RemainingDebt = " + remainingDebt +
+                ", mInsurancePremiumValue = " + insurancePremiumValue +
                 " }";
     }
 }
