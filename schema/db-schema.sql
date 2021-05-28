@@ -17,7 +17,6 @@ create table schedule_calculation_event(
     aprc double not null
 );
 create table payments(
-    payment_id int not null primary key auto_increment,
     payment_index int not null,
     payment_date date not null,
     capital_payment double not null,

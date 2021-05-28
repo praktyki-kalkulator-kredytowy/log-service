@@ -13,9 +13,8 @@ public class PaymentConverterImpl implements PaymentConverter {
 
 
     @Override
-    public PaymentEntity convertToEntity(PaymentModel paymentModel, ScheduleCalculationEventEntity scheduleCalculationEvent) {
+    public PaymentEntity convertToEntity(PaymentModel paymentModel) {
         return new PaymentEntity(
-                scheduleCalculationEvent,
                 paymentModel.index,
                 paymentModel.date,
                 paymentModel.capitalInstallment,
@@ -26,16 +25,16 @@ public class PaymentConverterImpl implements PaymentConverter {
     }
 
     @Override
-    public List<PaymentEntity> convertListToEntity(List<PaymentModel> paymentModel, ScheduleCalculationEventEntity scheduleCalculationEvent) {
+    public List<PaymentEntity> convertListToEntity(List<PaymentModel> paymentModel) {
         return paymentModel.stream()
-                .map(i -> convertToEntity(i, scheduleCalculationEvent))
+                .map(this::convertToEntity)
                 .collect(Collectors.toList());
     }
 
     @Override
     public PaymentModel convertToModel(PaymentEntity paymentEntity) {
         return new PaymentModel(
-                paymentEntity.paymentId,
+                paymentEntity.installmentIndex,
                 paymentEntity.installmentDate,
                 paymentEntity.capitalInstallment,
                 paymentEntity.interestInstallment,

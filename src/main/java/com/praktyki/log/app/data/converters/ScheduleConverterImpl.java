@@ -1,6 +1,7 @@
 package com.praktyki.log.app.data.converters;
 
 import com.praktyki.log.app.data.entities.PaymentEntity;
+import com.praktyki.log.app.data.entities.ScheduleCalculationEventEntity;
 import com.praktyki.log.app.data.entities.ScheduleConfigurationEntity;
 import com.praktyki.log.app.data.entities.ScheduleSummaryEntity;
 import com.praktyki.log.web.message.models.ScheduleModel;
@@ -31,21 +32,17 @@ public class ScheduleConverterImpl implements ScheduleConverter {
     }
 
     @Override
-    public ScheduleModel convertToScheduleModel(
-            ScheduleSummaryEntity scheduleSummaryEntity,
-            ScheduleConfigurationEntity scheduleConfiguration,
-            List<PaymentEntity> paymentList
-    )
+    public ScheduleModel convertToScheduleModel(ScheduleCalculationEventEntity entity)
     {
         return new ScheduleModel(
-                mScheduleConfigurationConverter.convertToModel(scheduleConfiguration),
-                mPaymentConverter.convertListToModel(paymentList),
-                scheduleSummaryEntity.sumUpCapitalInstallment,
-                scheduleSummaryEntity.loanPaidOutAmount,
-                scheduleSummaryEntity.commissionAmount,
-                scheduleSummaryEntity.insuranceTotalAmount,
-                scheduleSummaryEntity.loanTotalCost,
-                scheduleSummaryEntity.aprc
+                mScheduleConfigurationConverter.convertToModel(entity.scheduleConfigurationEntity),
+                mPaymentConverter.convertListToModel(entity.payments),
+                entity.scheduleSummaryEntity.sumUpCapitalInstallment,
+                entity.scheduleSummaryEntity.loanPaidOutAmount,
+                entity.scheduleSummaryEntity.commissionAmount,
+                entity.scheduleSummaryEntity.insuranceTotalAmount,
+                entity.scheduleSummaryEntity.loanTotalCost,
+                entity.scheduleSummaryEntity.aprc
         );
     }
 

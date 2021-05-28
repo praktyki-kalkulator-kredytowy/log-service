@@ -5,14 +5,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Entity
+@Embeddable
 @Table(name = "payments")
 public class PaymentEntity {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "payment_id")
-    public int paymentId;
 
     @Column(name = "payment_index")
     public int installmentIndex;
@@ -32,19 +27,14 @@ public class PaymentEntity {
     @Column(name = "insurance_premium_value")
     public Double insurancePremiumValue;
 
-    @ManyToOne
-    @JoinColumn(name = "schedule_calculation_event_id")
-    public ScheduleCalculationEventEntity scheduleCalculationEventEntity;
-
     public PaymentEntity() {
     }
 
     public PaymentEntity(
-            ScheduleCalculationEventEntity scheduleCalculationEventEntity, int installmentIndex,
+            int installmentIndex,
             LocalDate installmentDate, Double capitalInstallment,
             Double interestInstallment, Double remainingDebt, Double insurancePremiumValue)
     {
-        this.scheduleCalculationEventEntity = scheduleCalculationEventEntity;
         this.installmentIndex = installmentIndex;
         this.installmentDate = installmentDate;
         this.capitalInstallment = capitalInstallment;

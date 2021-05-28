@@ -2,6 +2,7 @@ package com.praktyki.log.app.data.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,18 +23,28 @@ public class ScheduleCalculationEventEntity {
     @Embedded
     public ScheduleSummaryEntity scheduleSummaryEntity;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(
+            name = "payments",
+            joinColumns = @JoinColumn(name = "schedule_calculation_event_id", referencedColumnName = "schedule_calculation_event_id")
+    )
+    public List<PaymentEntity> payments;
+
     public ScheduleCalculationEventEntity() {
     }
 
     public ScheduleCalculationEventEntity(
-            int eventId, LocalDate orderDate,
-            ScheduleConfigurationEntity scheduleConfigurationEntity, ScheduleSummaryEntity scheduleSummaryEntity
-    )
-    {
+            int eventId,
+            LocalDate orderDate,
+            ScheduleConfigurationEntity scheduleConfigurationEntity,
+            ScheduleSummaryEntity scheduleSummaryEntity,
+            List<PaymentEntity> payments
+    ) {
         this.eventId = eventId;
         this.orderDate = orderDate;
         this.scheduleConfigurationEntity = scheduleConfigurationEntity;
         this.scheduleSummaryEntity = scheduleSummaryEntity;
+        this.payments = payments;
     }
 
     @Override

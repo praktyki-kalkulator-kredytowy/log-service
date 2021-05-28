@@ -17,6 +17,9 @@ public class ScheduleCalculationEventDetailsConverterImpl implements ScheduleCal
     @Autowired
     private ScheduleConfigurationConverter mScheduleConfigurationConverter;
 
+    @Autowired
+    private PaymentConverter mPaymentConverter;
+
     @Override
     public ScheduleCalculationEventEntity convertToEntity(ScheduleCalculationEventDetailsModel scheduleCalculationEventDetailsModel) {
 
@@ -26,22 +29,20 @@ public class ScheduleCalculationEventDetailsConverterImpl implements ScheduleCal
                 mScheduleConfigurationConverter.convertToEntity(
                         scheduleCalculationEventDetailsModel.schedule.scheduleConfiguration
                 ),
-                mScheduleConverter.convertToSummaryEntity(scheduleCalculationEventDetailsModel.schedule)
+                mScheduleConverter.convertToSummaryEntity(scheduleCalculationEventDetailsModel.schedule),
+                mPaymentConverter.convertListToEntity(scheduleCalculationEventDetailsModel.schedule.payments)
         );
 
     }
 
     @Override
     public ScheduleCalculationEventDetailsModel convertToModel(
-            ScheduleCalculationEventEntity scheduleCalculationEventEntity,
-            List<PaymentEntity> paymentEntityList)
+            ScheduleCalculationEventEntity scheduleCalculationEventEntity)
     {
         return new ScheduleCalculationEventDetailsModel(
                 scheduleCalculationEventEntity.eventId,
                 mScheduleConverter.convertToScheduleModel(
-                        scheduleCalculationEventEntity.scheduleSummaryEntity,
-                        scheduleCalculationEventEntity.scheduleConfigurationEntity,
-                        paymentEntityList
+                        scheduleCalculationEventEntity
                 ),
                 scheduleCalculationEventEntity.orderDate
         );

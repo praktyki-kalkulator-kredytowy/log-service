@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface PaymentConverter {
 
-    PaymentEntity convertToEntity(PaymentModel paymentModel, ScheduleCalculationEventEntity scheduleCalculationEvent);
+    PaymentEntity convertToEntity(PaymentModel paymentModel);
 
-    List<PaymentEntity> convertListToEntity(List<PaymentModel> paymentModel, ScheduleCalculationEventEntity scheduleCalculationEvent);
+    List<PaymentEntity> convertListToEntity(List<PaymentModel> paymentModel);
 
     PaymentModel convertToModel(PaymentEntity paymentEntity);
 

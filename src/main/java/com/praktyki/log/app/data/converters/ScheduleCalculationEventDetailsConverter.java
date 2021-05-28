@@ -11,8 +11,7 @@ public interface ScheduleCalculationEventDetailsConverter {
     ScheduleCalculationEventEntity convertToEntity(ScheduleCalculationEventDetailsModel scheduleCalculationEventDetailsModel);
 
     ScheduleCalculationEventDetailsModel convertToModel(
-            ScheduleCalculationEventEntity scheduleCalculationEventEntity,
-            List<PaymentEntity> paymentEntityList
+            ScheduleCalculationEventEntity scheduleCalculationEventEntity
     );
 
 

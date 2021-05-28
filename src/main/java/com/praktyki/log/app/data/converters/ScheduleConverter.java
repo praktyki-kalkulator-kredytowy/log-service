@@ -1,6 +1,7 @@
 package com.praktyki.log.app.data.converters;
 
 import com.praktyki.log.app.data.entities.PaymentEntity;
+import com.praktyki.log.app.data.entities.ScheduleCalculationEventEntity;
 import com.praktyki.log.app.data.entities.ScheduleConfigurationEntity;
 import com.praktyki.log.app.data.entities.ScheduleSummaryEntity;
 import com.praktyki.log.web.message.models.ScheduleModel;
@@ -12,9 +13,7 @@ public interface ScheduleConverter {
     ScheduleSummaryEntity convertToSummaryEntity(ScheduleModel scheduleModel);
 
     ScheduleModel convertToScheduleModel(
-            ScheduleSummaryEntity scheduleSummaryEntity,
-            ScheduleConfigurationEntity scheduleConfiguration,
-            List<PaymentEntity> paymentList
+            ScheduleCalculationEventEntity entity
     );
 
 }
