@@ -10,6 +10,7 @@ create table schedule_calculation_event(
     insurance boolean not null,
     age int null,
     sum_up_capital_installment double not null,
+    sum_up_interest_installment double not null,
     loan_paid_out_amount double not null,
     commission_amount double not null,
     insurance_total_cost double not null,

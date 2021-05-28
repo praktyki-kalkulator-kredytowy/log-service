@@ -16,6 +16,7 @@ public class ScheduleCalculationEventModel {
     public Integer age;
     public boolean insurance;
     public double capitalInstallmentSum;
+    public double interestInstallmentSum;
     public double loanPaidOutAmount;
     public double commissionAmount;
     public double insuranceTotalAmount;
@@ -37,6 +38,7 @@ public class ScheduleCalculationEventModel {
             Integer age,
             boolean insurance,
             double capitalInstallmentSum,
+            double interestInstallmentSum,
             double loanPaidOutAmount,
             double commissionAmount,
             double insuranceTotalAmount,
@@ -54,6 +56,7 @@ public class ScheduleCalculationEventModel {
         this.age = age;
         this.insurance = insurance;
         this.capitalInstallmentSum = capitalInstallmentSum;
+        this.interestInstallmentSum = interestInstallmentSum;
         this.loanPaidOutAmount = loanPaidOutAmount;
         this.commissionAmount = commissionAmount;
         this.insuranceTotalAmount = insuranceTotalAmount;
@@ -74,6 +77,7 @@ public class ScheduleCalculationEventModel {
                 && Double.compare(that.commissionRate, commissionRate) == 0
                 && age == that.age && insurance == that.insurance
                 && Double.compare(that.capitalInstallmentSum, capitalInstallmentSum) == 0
+                && Double.compare(that.interestInstallmentSum, interestInstallmentSum) == 0
                 && Double.compare(that.loanPaidOutAmount, loanPaidOutAmount) == 0
                 && Double.compare(that.commissionAmount, commissionAmount) == 0
                 && Double.compare(that.insuranceTotalAmount, insuranceTotalAmount) == 0
@@ -95,6 +99,7 @@ public class ScheduleCalculationEventModel {
                 age,
                 insurance,
                 capitalInstallmentSum,
+                interestInstallmentSum,
                 loanPaidOutAmount,
                 commissionAmount,
                 insuranceTotalAmount,

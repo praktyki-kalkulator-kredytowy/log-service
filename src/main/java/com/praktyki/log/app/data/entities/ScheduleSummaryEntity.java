@@ -10,6 +10,9 @@ public class ScheduleSummaryEntity {
     @Column(name = "sum_up_capital_installment")
     public Double sumUpCapitalInstallment;
 
+    @Column(name = "sum_up_interest_installment")
+    public Double sumUpInterestInstallment;
+
     @Column(name = "loan_paid_out_amount")
     public Double loanPaidOutAmount;
 
@@ -29,11 +32,12 @@ public class ScheduleSummaryEntity {
     }
 
     public ScheduleSummaryEntity(
-            Double sumUpCapitalInstallment,
+            Double sumUpCapitalInstallment, Double sumUpInterestInstallment,
             Double loanPaidOutAmount, Double commissionAmount,
             Double insuranceTotalAmount, Double loanTotalCost, Double aprc)
     {
         this.sumUpCapitalInstallment = sumUpCapitalInstallment;
+        this.sumUpInterestInstallment = sumUpInterestInstallment;
         this.loanPaidOutAmount = loanPaidOutAmount;
         this.commissionAmount = commissionAmount;
         this.insuranceTotalAmount = insuranceTotalAmount;

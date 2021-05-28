@@ -19,6 +19,7 @@ public class ScheduleCalculationEventConverterImpl implements ScheduleCalculatio
                 scheduleCalculationEventEntity.scheduleConfigurationEntity.age,
                 scheduleCalculationEventEntity.scheduleConfigurationEntity.insurance,
                 scheduleCalculationEventEntity.scheduleSummaryEntity.sumUpCapitalInstallment,
+                scheduleCalculationEventEntity.scheduleSummaryEntity.sumUpInterestInstallment,
                 scheduleCalculationEventEntity.scheduleSummaryEntity.loanPaidOutAmount,
                 scheduleCalculationEventEntity.scheduleSummaryEntity.commissionAmount,
                 scheduleCalculationEventEntity.scheduleSummaryEntity.insuranceTotalAmount,

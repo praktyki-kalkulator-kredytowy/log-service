@@ -23,6 +23,7 @@ public class ScheduleConverterImpl implements ScheduleConverter {
     public ScheduleSummaryEntity convertToSummaryEntity(ScheduleModel scheduleModel) {
         return new ScheduleSummaryEntity(
                 scheduleModel.capitalInstallmentSum,
+                scheduleModel.interestInstallmentSum,
                 scheduleModel.loanPaidOutAmount,
                 scheduleModel.commissionAmount,
                 scheduleModel.insuranceTotalAmount,
@@ -38,6 +39,7 @@ public class ScheduleConverterImpl implements ScheduleConverter {
                 mScheduleConfigurationConverter.convertToModel(entity.scheduleConfigurationEntity),
                 mPaymentConverter.convertListToModel(entity.payments),
                 entity.scheduleSummaryEntity.sumUpCapitalInstallment,
+                entity.scheduleSummaryEntity.sumUpInterestInstallment,
                 entity.scheduleSummaryEntity.loanPaidOutAmount,
                 entity.scheduleSummaryEntity.commissionAmount,
                 entity.scheduleSummaryEntity.insuranceTotalAmount,
