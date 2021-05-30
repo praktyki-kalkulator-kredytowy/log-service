@@ -61,7 +61,9 @@ public class AuditDataController {
             @RequestParam(value = "clientAgeStart", required = false) Integer clientAgeStart,
             @RequestParam(value = "clientAgeEnd", required = false) Integer clientAgeEnd,
             @RequestParam(value = "aprcStart", required = false) Double aprcStart,
-            @RequestParam(value = "aprcEnd", required = false) Double aprcEnd
+            @RequestParam(value = "aprcEnd", required = false) Double aprcEnd,
+            @RequestParam(value = "commissionRateStart", required = false) Double commissionRateStart,
+            @RequestParam(value = "commissionRateEnd", required = false) Double commissionRateEnd
     )
     {
 
@@ -73,7 +75,8 @@ public class AuditDataController {
                 interestRateStart, interestRateEnd,
                 insuranceSumStart, insuranceSumEnd,
                 clientAgeStart, clientAgeEnd,
-                aprcStart, aprcEnd
+                aprcStart, aprcEnd,
+                commissionRateStart, commissionRateEnd
         );
 
         return events.stream().map(mScheduleCalculationEventConverter::convertToModel).collect(Collectors.toList());

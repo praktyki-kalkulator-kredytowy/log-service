@@ -7,6 +7,7 @@ import com.praktyki.log.web.exceptions.NotSuchEntityException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -33,7 +34,9 @@ public class AuditDataInteractor {
             Integer clientAgeStart,
             Integer clientAgeEnd,
             Double aprcStart,
-            Double aprcEnd
+            Double aprcEnd,
+            Double commissionRateStart,
+            Double commissionRateEnd
     ) {
 
         Specification<ScheduleCalculationEventEntity> spec =
@@ -80,7 +83,14 @@ public class AuditDataInteractor {
                         .get(ScheduleSummaryEntity_.aprc)))
                 .and(SpecUtils.lte(aprcEnd, r -> r
                         .get(ScheduleCalculationEventEntity_.scheduleSummaryEntity)
-                        .get(ScheduleSummaryEntity_.aprc)));
+                        .get(ScheduleSummaryEntity_.aprc)))
+                .and(SpecUtils.gte(commissionRateStart, r -> r
+                        .get(ScheduleCalculationEventEntity_.scheduleConfigurationEntity)
+                        .get(ScheduleConfigurationEntity_.COMMISSION_RATE)))
+                .and(SpecUtils.lte(commissionRateEnd, r -> r
+                        .get(ScheduleCalculationEventEntity_.scheduleConfigurationEntity)
+                        .get(ScheduleConfigurationEntity_.COMMISSION_RATE)));
+
 
 
         return mAuditRepository.findAll(spec);
