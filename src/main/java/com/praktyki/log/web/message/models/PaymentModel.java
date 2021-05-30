@@ -9,16 +9,16 @@ public class PaymentModel {
     public Double capitalInstallment;
     public Double interestInstallment;
     public Double remainingDebt;
-    public Double insurancePremiumValue;
+    public Double insurancePremium;
 
     public PaymentModel(int index, LocalDate date, Double capitalInstallment,
-                        Double interestInstallment, Double remainingDebt, Double insurancePremiumValue) {
+                        Double interestInstallment, Double remainingDebt, Double insurancePremium) {
         this.index = index;
         this.date = date;
         this.capitalInstallment = capitalInstallment;
         this.interestInstallment = interestInstallment;
         this.remainingDebt = remainingDebt;
-        this.insurancePremiumValue = insurancePremiumValue;
+        this.insurancePremium = insurancePremium;
     }
 
     public PaymentModel() {}
@@ -31,7 +31,7 @@ public class PaymentModel {
                 ", CapitalInstallment = " + capitalInstallment +
                 ", InterestInstallment = " + interestInstallment +
                 ", RemainingDebt = " + remainingDebt +
-                ", mInsurancePremiumValue = " + insurancePremiumValue +
+                ", mInsurancePremiumValue = " + insurancePremium +
                 " }";
     }
 }

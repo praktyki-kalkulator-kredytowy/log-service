@@ -1,14 +1,10 @@
 package com.praktyki.log.app.data.converters;
 
-import com.praktyki.log.app.data.entities.PaymentEntity;
 import com.praktyki.log.app.data.entities.ScheduleCalculationEventEntity;
-import com.praktyki.log.app.data.entities.ScheduleConfigurationEntity;
 import com.praktyki.log.app.data.entities.ScheduleSummaryEntity;
 import com.praktyki.log.web.message.models.ScheduleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class ScheduleConverterImpl implements ScheduleConverter {
@@ -38,8 +34,8 @@ public class ScheduleConverterImpl implements ScheduleConverter {
         return new ScheduleModel(
                 mScheduleConfigurationConverter.convertToModel(entity.scheduleConfigurationEntity),
                 mPaymentConverter.convertListToModel(entity.payments),
-                entity.scheduleSummaryEntity.sumUpCapitalInstallment,
-                entity.scheduleSummaryEntity.sumUpInterestInstallment,
+                entity.scheduleSummaryEntity.capitalInstallmentSum,
+                entity.scheduleSummaryEntity.interestInstallmentSum,
                 entity.scheduleSummaryEntity.loanPaidOutAmount,
                 entity.scheduleSummaryEntity.commissionAmount,
                 entity.scheduleSummaryEntity.insuranceTotalAmount,

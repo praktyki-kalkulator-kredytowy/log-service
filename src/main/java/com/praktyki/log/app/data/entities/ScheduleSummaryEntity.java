@@ -1,17 +1,16 @@
 package com.praktyki.log.app.data.entities;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 @Embeddable
 public class ScheduleSummaryEntity {
 
-    @Column(name = "sum_up_capital_installment")
-    public Double sumUpCapitalInstallment;
+    @Column(name = "capital_installment_sum")
+    public Double capitalInstallmentSum;
 
-    @Column(name = "sum_up_interest_installment")
-    public Double sumUpInterestInstallment;
+    @Column(name = "interest_installment_sum")
+    public Double interestInstallmentSum;
 
     @Column(name = "loan_paid_out_amount")
     public Double loanPaidOutAmount;
@@ -32,12 +31,12 @@ public class ScheduleSummaryEntity {
     }
 
     public ScheduleSummaryEntity(
-            Double sumUpCapitalInstallment, Double sumUpInterestInstallment,
+            Double capitalInstallmentSum, Double interestInstallmentSum,
             Double loanPaidOutAmount, Double commissionAmount,
             Double insuranceTotalAmount, Double loanTotalCost, Double aprc)
     {
-        this.sumUpCapitalInstallment = sumUpCapitalInstallment;
-        this.sumUpInterestInstallment = sumUpInterestInstallment;
+        this.capitalInstallmentSum = capitalInstallmentSum;
+        this.interestInstallmentSum = interestInstallmentSum;
         this.loanPaidOutAmount = loanPaidOutAmount;
         this.commissionAmount = commissionAmount;
         this.insuranceTotalAmount = insuranceTotalAmount;
@@ -48,7 +47,7 @@ public class ScheduleSummaryEntity {
     @Override
     public int hashCode() {
         return Objects.hash(
-                 sumUpCapitalInstallment, loanPaidOutAmount, commissionAmount, insuranceTotalAmount,loanTotalCost,aprc
+                capitalInstallmentSum, loanPaidOutAmount, commissionAmount, insuranceTotalAmount,loanTotalCost,aprc
         );
     }
 
@@ -57,7 +56,7 @@ public class ScheduleSummaryEntity {
         StringBuilder sb = new StringBuilder();
         sb.append("ScheduleSummary {\n");
 
-        sb.append("    sumUpCapitalInstallment: ").append(toIndentedString(sumUpCapitalInstallment)).append("\n");
+        sb.append("    sumUpCapitalInstallment: ").append(toIndentedString(capitalInstallmentSum)).append("\n");
         sb.append("    loanPaidOutAmount: ").append(toIndentedString(loanPaidOutAmount)).append("\n");
         sb.append("    commissionAmount: ").append(toIndentedString(commissionAmount)).append("\n");
         sb.append("    insuranceTotalAmount: ").append(toIndentedString(insuranceTotalAmount)).append("\n");
