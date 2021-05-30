@@ -75,7 +75,7 @@ public class ScheduleCalculationEventModel {
                 && installmentAmount == that.installmentAmount
                 && Double.compare(that.interestRate, interestRate) == 0
                 && Double.compare(that.commissionRate, commissionRate) == 0
-                && age == that.age && insurance == that.insurance
+                && age.equals(that.age) && insurance == that.insurance
                 && Double.compare(that.capitalInstallmentSum, capitalInstallmentSum) == 0
                 && Double.compare(that.interestInstallmentSum, interestInstallmentSum) == 0
                 && Double.compare(that.loanPaidOutAmount, loanPaidOutAmount) == 0

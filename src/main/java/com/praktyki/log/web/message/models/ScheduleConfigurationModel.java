@@ -57,7 +57,7 @@ public class ScheduleConfigurationModel {
                 && installmentAmount == that.installmentAmount
                 && Double.compare(that.interestRate, interestRate) == 0
                 && Double.compare(that.commissionRate, commissionRate) == 0
-                && age == that.age && insurance == that.insurance
+                && age.equals(that.age) && insurance == that.insurance
                 && installmentType.equals(that.installmentType)
                 && withdrawalDate.equals(that.withdrawalDate);
     }
