@@ -86,10 +86,10 @@ public class AuditDataInteractor {
                         .get(ScheduleSummaryEntity_.aprc)))
                 .and(SpecUtils.gte(commissionRateStart, r -> r
                         .get(ScheduleCalculationEventEntity_.scheduleConfigurationEntity)
-                        .get(ScheduleConfigurationEntity_.COMMISSION_RATE)))
+                        .get(ScheduleConfigurationEntity_.commissionRate)))
                 .and(SpecUtils.lte(commissionRateEnd, r -> r
                         .get(ScheduleCalculationEventEntity_.scheduleConfigurationEntity)
-                        .get(ScheduleConfigurationEntity_.COMMISSION_RATE)));
+                        .get(ScheduleConfigurationEntity_.commissionRate)));
 
 
 
